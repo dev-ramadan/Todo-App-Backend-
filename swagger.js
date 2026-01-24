@@ -7,7 +7,7 @@ const options = {
     info: {
       title: "Todo App API",
       version: "1.0.0",
-      description: "API documentation for Users, Auth, and Todos",
+      description: "API documentation for Users, Auth, and Todos created by Ramadan Mohamed",
     },
     servers: [
       {
