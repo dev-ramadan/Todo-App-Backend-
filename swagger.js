@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:8090",
+        url: "https://todo-app-api-production-4045.up.railway.app",
       },
     ],
     components: {
