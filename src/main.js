@@ -6,7 +6,7 @@ import userRoute from "./routes/user.route.js";
 import cors from "cors"
 const root = async (app) => {
     app.use(express.json())
-    app,use(cors())
+    app.use(cors())
     await connection();
 
     app.use(authRoute);
