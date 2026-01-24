@@ -7,11 +7,11 @@ dotenv.config({
     path: path.resolve(process.cwd(), ".env")
 })
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT||8090;
 (async () => {
     await root(app);
-    swaggerDocs(app,port)
-    app.listen(port, () => {
+    swaggerDocs(app, port)
+    app.listen(PORT, '0.0.0.0', () => {
         console.log("server is running at port =>", port);
     })
 })()
