@@ -70,8 +70,6 @@ todoRoute.get("/todos/:id", auth, gettById);
  *                 type: string
  *               note:
  *                 type: string
- *               isFinished:
- *                 type: boolean
  *     responses:
  *       201:
  *         description: Todo created successfully
@@ -110,6 +108,7 @@ todoRoute.post("/todos", auth, create);
  *                 type: string
  *               isFinished:
  *                 type: boolean
+ *                 default: false
  *     responses:
  *       201:
  *         description: Todo updated successfully
