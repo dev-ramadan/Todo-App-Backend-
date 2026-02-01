@@ -11,7 +11,10 @@ const options = {
     },
     servers: [
       {
-        url: "https://todo-app-api-production-4045.up.railway.app",
+        // url: "https://todo-app-api-production-4045.up.railway.app",
+        // url:"http://localhost:8090"
+                url: "http://localhost:8090",
+
       },
     ],
     components: {

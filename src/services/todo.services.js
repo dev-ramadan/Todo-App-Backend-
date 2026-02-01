@@ -1,8 +1,12 @@
 import todosModel from "../db/models/todos.model.js"
+import { paginate } from "../utils/pagination.js";
 
-export const getTodos = async (userId) => {
-    const todos = await todosModel.find({ user: userId });
-    return todos
+export const getTodos = async (userId, pag, lmt) => {
+    const total = await todosModel.countDocuments({ user: userId })
+    const { limit, skip, page, totalPages, totalItems, hasNext, hasPrev } = paginate(total, pag, lmt)
+    const pagination = { limit, skip, page, totalPages, totalItems, hasNext, hasPrev }
+    const todos = await todosModel.find({ user: userId }).skip(skip).limit(limit);
+    return { todos, pagination }
 }
 
 export const getTodoById = async (userId, data) => {

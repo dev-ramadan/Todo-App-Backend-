@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { create, getAll, gettById, removeTodo, update } from "../controllers/todos.controller.js";
 import { auth } from "../middleware/auth.middleware.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 const todoRoute = Router();
 /**
@@ -18,10 +19,22 @@ const todoRoute = Router();
  *     tags: [Todos]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 5
  *     responses:
  *       200:
  *         description: List of todos
  */
+
 // ** get all todos 
 todoRoute.get("/todos", auth, getAll);
 
@@ -44,7 +57,7 @@ todoRoute.get("/todos", auth, getAll);
  *         description: Todo object
  */
 // ** get  todo by id 
-todoRoute.get("/todos/:id", auth, gettById);
+todoRoute.get("/todos/:id", auth, asyncHandler(gettById));
 
 
 /**
@@ -114,7 +127,7 @@ todoRoute.post("/todos", auth, create);
  *         description: Todo updated successfully
  */
 // ** update  todo 
-todoRoute.put("/todos/:id", auth, update);
+todoRoute.put("/todos/:id", auth, asyncHandler(update));
 
 
 
